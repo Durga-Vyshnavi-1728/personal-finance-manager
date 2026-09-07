@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Personal Finance Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-layout">
+        {% include 'includes/sidebar.html' %}
+        <main class="main-content">
+            <h1>👤 Profile Settings</h1>
+            <p>Manage your account</p>
+            <div class="form-card">
+                <form action="/api/profile" method="POST">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" value="{{ user.name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" value="{{ user.email }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>New Password (leave blank to keep current)</label>
+                        <input type="password" name="password" placeholder="••••••••">
+                    </div>
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+            <form action="/api/logout" method="POST" style="margin-top: 16px;">
+                <button type="submit" class="logout-btn">🚪 Logout</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
